@@ -1,0 +1,128 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #008080;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.05) 10px,
+      rgba(0, 0, 0, 0.05) 20px
+    );
+}
+
+.window {
+  width: 100%;
+  max-width: 700px;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.content {
+  padding: 40px;
+  background: #c0c0c0;
+}
+
+.welcomeContent {
+  text-align: center;
+}
+
+.avatarSection {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.textSection {
+  color: #000;
+}
+
+.title {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 32px;
+  color: #000080;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+.subtitle {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.description {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 14px;
+  color: #000;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  text-align: left;
+  background: #fff;
+  padding: 20px;
+  border: 2px solid #000;
+  box-shadow: 
+    inset 2px 2px 0 #fff,
+    inset -2px -2px 0 #808080;
+}
+
+.description p {
+  margin: 10px 0;
+}
+
+.startButton {
+  background: #00ff00 !important;
+  color: #000 !important;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: 3px solid #000;
+  box-shadow: 
+    4px 4px 0 #000,
+    inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.1s;
+}
+
+.startButton:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 
+    2px 2px 0 #000,
+    inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.startButton:active {
+  transform: translate(4px, 4px);
+  box-shadow: 
+    1px 1px 0 #000,
+    inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+

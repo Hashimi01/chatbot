@@ -1,0 +1,43 @@
+.sendButton {
+    background: #00ff00 !important;
+    color: #000 !important;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', cursive;
+    min-width: 100px;
+    transition: all 0.2s ease;
+}
+
+.sendButton:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sendButton:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.sendButton:disabled {
+    background: #808080 !important;
+    color: #c0c0c0 !important;
+    cursor: not-allowed;
+}
+
+/* Scrollbar styling for Windows 95 look */
+.messagesContainer::-webkit-scrollbar {
+    width: 16px;
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+    background: #c0c0c0;
+    border: 2px inset #c0c0c0;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border: 2px outset #c0c0c0;
+    box-shadow: inset 1px 1px 0 #fff;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}

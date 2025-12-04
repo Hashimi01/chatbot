@@ -1,0 +1,292 @@
+.chatContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.window {
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: #c0c0c0;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+  height: 100%;
+}
+
+.messagesContainer {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 20px;
+  background: #c0c0c0;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.02) 20px,
+      rgba(0, 0, 0, 0.02) 21px);
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+  min-height: 0;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  /* Force scrollbar to always show */
+  scrollbar-gutter: stable;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-start;
+  gap: 10px;
+  animation: fadeIn 0.3s ease-in;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userMessage {
+  flex-direction: row-reverse;
+}
+
+.rogerMessage {
+  flex-direction: row;
+}
+
+.avatarWrapper {
+  flex-shrink: 0;
+}
+
+.messageBubble {
+  max-width: 70%;
+  min-width: 120px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 14px;
+  box-shadow:
+    2px 2px 0 #000,
+    inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+}
+
+.userMessage .messageBubble {
+  background: #dcf8c6;
+  border: 2px solid #000;
+}
+
+.rogerMessage .messageBubble {
+  background: #fff;
+  border: 2px solid #000;
+}
+
+.messageText {
+  color: #000;
+  line-height: 1.4;
+  text-transform: uppercase;
+  font-weight: bold;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.typingIndicator {
+  display: inline-block;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: #000080;
+  font-weight: bold;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.typingDots {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+}
+
+.typingDots span {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  animation: typingDot 1.4s infinite;
+}
+
+.typingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingDot {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.messageTime {
+  font-size: 10px;
+  color: #666;
+  margin-top: 5px;
+  font-family: 'MS Sans Serif', sans-serif;
+  text-transform: none;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  background: #c0c0c0;
+  border-top: 2px solid #000;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.input {
+  flex: 1;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.sendButton {
+  background: #00ff00 !important;
+  color: #000 !important;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive;
+  min-width: 100px;
+}
+
+.sendButton:disabled {
+  background: #808080 !important;
+  color: #c0c0c0 !important;
+  cursor: not-allowed;
+}
+
+/* Scrollbar styling for Windows 95 look */
+.messagesContainer::-webkit-scrollbar {
+  width: 17px;
+  display: block !important;
+  -webkit-appearance: none;
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #fff;
+  box-shadow: inset 1px 0 0 #808080;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  box-shadow: 
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #808080;
+  min-height: 30px;
+  border-radius: 0;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:active {
+  background: #808080;
+  border: 2px inset #c0c0c0;
+  box-shadow: 
+    inset 1px 1px 0 #808080,
+    inset -1px -1px 0 #fff;
+}
+
+.messagesContainer::-webkit-scrollbar-button {
+  display: block;
+  height: 17px;
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+.messagesContainer::-webkit-scrollbar-button:vertical:decrement {
+  border-bottom: 2px solid #000;
+}
+
+.messagesContainer::-webkit-scrollbar-button:vertical:increment {
+  border-top: 2px solid #000;
+}
+
+/* Firefox scrollbar */
+.messagesContainer {
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #808080;
+}

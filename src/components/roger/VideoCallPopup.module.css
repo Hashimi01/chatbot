@@ -1,0 +1,162 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.window {
+  width: 90%;
+  max-width: 600px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.content {
+  padding: 20px;
+  background: #c0c0c0;
+}
+
+.callScreen {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.callerInfo {
+  margin-bottom: 30px;
+}
+
+.callerName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000080;
+  margin-bottom: 10px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.callerStatus {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ringing {
+  animation: ring 0.5s infinite;
+  font-size: 24px;
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.acceptButton {
+  background: #00ff00 !important;
+  color: #000 !important;
+  font-weight: bold;
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.rejectButton {
+  background: #ff0000 !important;
+  color: #fff !important;
+  font-weight: bold;
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border: 3px solid #c0c0c0;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 400px;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.videoText {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px #00ff00;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ff00;
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+.closeButton {
+  margin-top: 10px;
+  width: 100%;
+}
+
+
