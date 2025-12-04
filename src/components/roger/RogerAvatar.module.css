@@ -170,26 +170,33 @@
 
 .statusIndicator {
   position: absolute;
-  bottom: -25px;
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 8px;
+  gap: 6px;
+  font-size: 11px;
   color: #00ff00;
-  text-shadow: 0 0 3px #00ff00;
+  text-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
   font-family: 'Courier New', monospace;
   white-space: nowrap;
+  font-weight: bold;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #00ff00;
 }
 
 .statusDot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: #00ff00;
   border-radius: 50%;
-  box-shadow: 0 0 4px #00ff00;
+  box-shadow: 0 0 6px #00ff00, 0 0 10px #00ff00;
   animation: blink 1s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes blink {
@@ -198,8 +205,10 @@
 }
 
 .statusText {
-  font-size: 7px;
-  letter-spacing: 0.5px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 

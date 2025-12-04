@@ -236,7 +236,7 @@ export const RogerChat: React.FC = () => {
               >
                 {message.sender === 'roger' && (
                   <div className={styles.avatarWrapper}>
-                    <RogerAvatar size={40} />
+                    <RogerAvatar size={40} showStatus={false} />
                   </div>
                 )}
                 <div className={styles.messageBubble}>
@@ -259,10 +259,10 @@ export const RogerChat: React.FC = () => {
                 </div>
               </div>
             ))}
-            {isTyping && (
+            {isTyping && !messages.some(msg => msg.sender === 'roger' && msg.isTyping) && (
               <div className={`${styles.message} ${styles.rogerMessage}`}>
                 <div className={styles.avatarWrapper}>
-                  <RogerAvatar size={40} />
+                  <RogerAvatar size={40} showStatus={false} />
                 </div>
                 <div className={styles.messageBubble}>
                   <div className={styles.typingDots}>

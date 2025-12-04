@@ -157,6 +157,27 @@
 .closeButton {
   margin-top: 10px;
   width: 100%;
+  background: #ff0000 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  border: 2px solid #cc0000 !important;
+  box-shadow: 
+    2px 2px 0 #000,
+    inset 1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.closeButton:hover {
+  background: #ff3333 !important;
+  border-color: #ff0000 !important;
+}
+
+.closeButton:active {
+  background: #cc0000 !important;
+  box-shadow: 
+    inset 2px 2px 0 #000,
+    inset -1px -1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
 

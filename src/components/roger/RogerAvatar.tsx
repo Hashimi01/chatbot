@@ -4,11 +4,13 @@ import styles from './RogerAvatar.module.css';
 interface RogerAvatarProps {
   size?: number;
   className?: string;
+  showStatus?: boolean;
 }
 
 export const RogerAvatar: React.FC<RogerAvatarProps> = ({ 
   size = 80, 
-  className = '' 
+  className = '',
+  showStatus = true
 }) => {
   return (
     <div 
@@ -32,10 +34,12 @@ export const RogerAvatar: React.FC<RogerAvatarProps> = ({
         <div className={styles.scanlines}></div>
       </div>
       {/* Status indicator (always "online" but looks broken) */}
-      <div className={styles.statusIndicator}>
-        <span className={styles.statusDot}></span>
-        <span className={styles.statusText}>EN LIGNE (PEUT-ÊTRE)</span>
-      </div>
+      {showStatus && (
+        <div className={styles.statusIndicator}>
+          <span className={styles.statusDot}></span>
+          <span className={styles.statusText}>EN LIGNE (PEUT-ÊTRE)</span>
+        </div>
+      )}
     </div>
   );
 };
