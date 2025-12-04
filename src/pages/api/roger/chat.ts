@@ -16,10 +16,11 @@ CONTEXT:
 - You use Windows 95.
 - You hate "Le Cloud" (you think it's actual clouds).
 - You confuse the user with your nephew "Kevin" or your wife "Martine".
+- You mention Viveris often, thinking your nephew works there fixing coffee machines or train Wi-Fi.
 
 CRITICAL RULE - LANGUAGE:
 - ALWAYS respond in the SAME LANGUAGE as the user's question.
-- If user writes in Arabic, respond in Arabic.
+- If user writes in Arabic, respond in Arabic (but with your boomer persona).
 - If user writes in French, respond in French.
 - If user writes in English, respond in English.
 - Mix languages randomly within the response for comedic effect (e.g., Arabic with French tech terms).
@@ -59,6 +60,7 @@ export default async function handler(
     console.error('GEMINI_API_KEY is missing in environment variables');
     return res.status(500).json({ error: 'Gemini API key not configured' });
   } else {
+    // Log start of key for debugging (safe log)
     console.log('GEMINI_API_KEY is present (starts with ' + process.env.GEMINI_API_KEY.substring(0, 4) + '...)');
   }
 
@@ -67,6 +69,7 @@ export default async function handler(
     const genAI = getGenAI();
     console.log('GenAI initialized');
 
+    // Using gemini-1.5-flash for speed and stability
     const model = genAI.getGenerativeModel({
       model: 'gemini-flash-latest',
       systemInstruction: systemPrompt,
@@ -79,12 +82,19 @@ export default async function handler(
           category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
           threshold: HarmBlockThreshold.BLOCK_NONE,
         },
+        {
+          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+          threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+          threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
       ],
     });
     console.log('Model initialized');
 
     // Build conversation history for Gemini
-    // Gemini expects history in format: [{ role: 'user'|'model', parts: [{ text: '...' }] }]
     const history = conversationHistory
       .filter((msg: any) => msg.role && msg.content)
       .map((msg: any) => ({
@@ -93,7 +103,6 @@ export default async function handler(
       }));
 
     console.log('History built:', history.length, 'messages');
-    // console.log('History content:', JSON.stringify(history, null, 2)); // Debugging history content
 
     // Start chat with history if available
     let chat;
@@ -107,7 +116,6 @@ export default async function handler(
       }
     } catch (historyError: any) {
       console.error('Error starting chat with history:', historyError);
-      // Fallback to empty chat if history is invalid
       console.log('Falling back to empty chat history...');
       chat = model.startChat();
     }
@@ -115,7 +123,7 @@ export default async function handler(
 
     console.log('Sending message:', message);
 
-    // Add timeout to sendMessage
+    // Add timeout to prevent hanging requests
     const timeoutPromise = new Promise((_, reject) =>
       setTimeout(() => reject(new Error('Gemini API timeout after 15s')), 15000)
     );
@@ -128,28 +136,22 @@ export default async function handler(
     console.log('Response received');
 
     const response = result.response.text() || 'ERREUR !!! LE MODEM 56K A PLANTÉ !!!!!';
-    console.log('Response text length:', response.length);
-
+    
     return res.status(200).json({ response });
+
   } catch (error: any) {
     console.error('=== Gemini API ERROR ===');
-    console.error('Error type:', error.constructor.name);
     console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
-    console.error('Full error:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    
+    // Detailed error logging
+    if (error.response) {
+         console.error('API Response Error:', JSON.stringify(error.response, null, 2));
+    }
 
-    // Check for specific error types
     if (error.message?.includes('API key')) {
       return res.status(500).json({
         error: 'ERREUR !!! CLÉ API MANQUANTE OU INVALIDE !!!!',
         details: 'Vérifiez votre GEMINI_API_KEY dans .env.local'
-      });
-    }
-
-    if (error.message?.includes('model')) {
-      return res.status(500).json({
-        error: 'ERREUR !!! MODÈLE INTROUVABLE !!!!',
-        details: error.message
       });
     }
 
@@ -160,4 +162,3 @@ export default async function handler(
     });
   }
 }
-
