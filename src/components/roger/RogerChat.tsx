@@ -42,19 +42,26 @@ export const RogerChat: React.FC = () => {
     }
   }, [messages]);
 
-  const scrollToBottom = useCallback(() => {
+  const scrollToBottom = useCallback((smooth: boolean = false) => {
     if (messagesContainerRef.current) {
       const container = messagesContainerRef.current;
+      // Always use instant scroll for better performance during typing
       container.scrollTop = container.scrollHeight;
     }
   }, []);
 
+  // Only scroll when user sends a new message, not during Roger's typing
   useEffect(() => {
-    // Use setTimeout to ensure DOM is updated
-    setTimeout(() => {
-      scrollToBottom();
-    }, 100);
-  }, [messages, isTyping, scrollToBottom]);
+    const lastMessage = messages[messages.length - 1];
+    // Only auto-scroll if it's a new user message or a completed Roger message (not typing)
+    if (lastMessage && !lastMessage.isTyping && lastMessage.sender === 'user') {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          scrollToBottom();
+        });
+      });
+    }
+  }, [messages, scrollToBottom]);
 
   const addTypo = (text: string): string => {
     const typos: { [key: string]: string } = {
@@ -99,15 +106,13 @@ export const RogerChat: React.FC = () => {
           const newMessages = [...prev];
           const lastMessage = newMessages[newMessages.length - 1];
           if (lastMessage && lastMessage.sender === 'roger' && lastMessage.isTyping) {
-            lastMessage.text = addTypo(displayText.join(''));
+            // Don't apply addTypo during typing - just show the text as is
+            lastMessage.text = displayText.join('');
           }
           return newMessages;
         });
         
-        // Scroll during typing every few characters
-        if (currentIndex % 5 === 0) {
-          setTimeout(() => scrollToBottom(), 10);
-        }
+        // No auto-scroll during typing - let user control scrolling
       } else {
         clearInterval(typeInterval);
         setMessages((prev) => {
@@ -115,10 +120,12 @@ export const RogerChat: React.FC = () => {
           const lastMessage = newMessages[newMessages.length - 1];
           if (lastMessage && lastMessage.sender === 'roger' && lastMessage.isTyping) {
             lastMessage.isTyping = false;
-            lastMessage.text = addTypo(text); // Final version with typos
+            // Apply typos only to the final version
+            lastMessage.text = addTypo(text);
           }
           return newMessages;
         });
+        // No auto-scroll - let user control scrolling
         onComplete();
       }
     }, 80); // Slow typing speed
@@ -137,6 +144,13 @@ export const RogerChat: React.FC = () => {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsTyping(true);
+    
+    // Scroll to bottom when user sends a message
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToBottom();
+      });
+    });
 
     // Add to conversation history
     const newHistory = [

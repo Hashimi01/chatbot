@@ -27,6 +27,13 @@
   image-rendering: crisp-edges;
 }
 
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .face {
   width: 100%;
   height: 100%;

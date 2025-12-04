@@ -18,15 +18,13 @@ export const RogerAvatar: React.FC<RogerAvatarProps> = ({
       {/* Low-quality webcam effect */}
       <div className={styles.webcamFrame}>
         <div className={styles.webcamImage}>
-          {/* Placeholder for Roger's face - low resolution effect */}
-          <div className={styles.face}>
-            <div className={styles.mustache}></div>
-            <div className={styles.glasses}>
-              <div className={styles.lens}></div>
-              <div className={styles.lens}></div>
-            </div>
-            <div className={styles.mouth}></div>
-          </div>
+          {/* Roger's profile picture */}
+          <img 
+            src="/photo.png" 
+            alt="Roger" 
+            className={styles.profileImage}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </div>
         {/* Webcam noise overlay */}
         <div className={styles.noiseOverlay}></div>
