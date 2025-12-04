@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['kalidokit'],
+  outputFileTracingRoot: require('path').join(__dirname),
 
   // i18n: {
   //   locales: ['ar', 'fr', 'en'],

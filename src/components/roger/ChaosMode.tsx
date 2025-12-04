@@ -54,7 +54,7 @@ export const ChaosMode: React.FC<ChaosModeProps> = ({
   };
 
   const childElement = React.Children.only(children) as React.ReactElement;
-
+  
   return (
     <>
       {showError && (
@@ -70,9 +70,9 @@ export const ChaosMode: React.FC<ChaosModeProps> = ({
           fontFamily: 'MS Sans Serif, sans-serif',
           boxShadow: '4px 4px 0 #000',
         }}>
-          <div style={{
-            background: '#ff0000',
-            color: '#fff',
+          <div style={{ 
+            background: '#ff0000', 
+            color: '#fff', 
             padding: '10px',
             marginBottom: '10px',
             fontWeight: 'bold',
@@ -100,20 +100,24 @@ export const ChaosMode: React.FC<ChaosModeProps> = ({
         </div>
       )}
       {React.cloneElement(childElement, {
-        ref: buttonRef,
+        ref: (node: any) => {
+          buttonRef.current = node;
+        },
         onMouseEnter: (e: React.MouseEvent) => {
           handleMouseEnter(e as React.MouseEvent<HTMLButtonElement>);
-          if (childElement.props.onMouseEnter) {
-            childElement.props.onMouseEnter(e);
+          const props = childElement.props as any;
+          if (props?.onMouseEnter) {
+            props.onMouseEnter(e);
           }
         },
         onClick: (e: React.MouseEvent) => {
           handleClick();
-          if (childElement.props.onClick) {
-            childElement.props.onClick(e);
+          const props = childElement.props as any;
+          if (props?.onClick) {
+            props.onClick(e);
           }
         },
-      })}
+      } as any)}
     </>
   );
 };
