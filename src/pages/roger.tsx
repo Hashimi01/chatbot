@@ -22,8 +22,14 @@ export default function RogerPage() {
         <meta name="description" content="Un peu plus rapide qu'un fax, plus intelligent qu'une machine à écrire." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Windows 95 style fonts */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Press+Start+2P&family=VT323&display=swap"
+          rel="stylesheet"
+        />
+        {/* MS Sans Serif alternative */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
           rel="stylesheet"
         />
       </Head>

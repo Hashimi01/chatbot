@@ -179,7 +179,7 @@
   font-size: 11px;
   color: #00ff00;
   text-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Share Tech Mono', monospace, sans-serif;
   white-space: nowrap;
   font-weight: bold;
   z-index: 10;

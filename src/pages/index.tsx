@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Share+Tech+Mono&display=swap"
           rel="stylesheet"
         />
       </Head>

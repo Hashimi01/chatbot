@@ -60,7 +60,7 @@
   font-weight: bold;
   color: #000080;
   margin-bottom: 10px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
 }
 
 .callerStatus {
@@ -135,7 +135,7 @@
 
 .videoText {
   color: #00ff00;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Share Tech Mono', monospace, sans-serif;
   font-size: 18px;
   font-weight: bold;
   text-align: center;

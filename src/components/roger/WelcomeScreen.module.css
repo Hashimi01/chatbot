@@ -39,7 +39,7 @@
   color: white;
   font-weight: bold;
   padding: 4px 8px;
-  font-family: 'MS Sans Serif', sans-serif;
+  font-family: 'MS Sans Serif', 'Share Tech Mono', 'Courier New', monospace, sans-serif;
 }
 
 .content {
@@ -62,7 +62,7 @@
 }
 
 .title {
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
   font-size: 32px;
   color: #000080;
   margin-bottom: 15px;
@@ -71,7 +71,7 @@
 }
 
 .subtitle {
-  font-family: 'MS Sans Serif', sans-serif;
+  font-family: 'MS Sans Serif', 'Share Tech Mono', 'Courier New', monospace, sans-serif;
   font-size: 16px;
   color: #333;
   margin-bottom: 25px;
@@ -79,7 +79,7 @@
 }
 
 .description {
-  font-family: 'MS Sans Serif', sans-serif;
+  font-family: 'MS Sans Serif', 'Share Tech Mono', 'Courier New', monospace, sans-serif;
   font-size: 14px;
   color: #000;
   line-height: 1.6;
@@ -101,7 +101,7 @@
   background: #00ff00 !important;
   color: #000 !important;
   font-weight: bold;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
   font-size: 18px;
   padding: 15px 30px;
   border: 3px solid #000;
